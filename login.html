@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+</head>
+<body>
+    <h2>Sign in</h2><br>
+    <div class="login">
+        
+    <form id="login" action="chat.html" method="POST" name="google-sheet">
+        <!-- <label><b>Name</b></label>
+        <input type="text" name="Name" id="Uname" placeholder="Username" required>
+        <br><br> -->
+        <label><b>E-mail</b></label>
+        <input type="email" name="E-mail" id="Pass" placeholder="E-mail" required>
+        <br><br>
+        <label><b>Password</b></label>
+        <input type="Password" name="Password" id="Pass" placeholder="Password" required>
+        <br><br>
+        
+        <p>Don't have an account?<a href="signup.html">SignUp</a></p>
+        <br><br>
+        <a href="chat.html">
+            <input type="submit" class="btn" name="submit" id="log" value="Sign in">
+        </a>
+        <br><br>
+        
+       <!-- <button type="button" class="btn" name="log" id="log" onclick="openPopup()">Login</button> -->
+        <!-- <input type="button" class="btn" name="log" id="log" value="Login" onclick="openPopup()"> -->
+    
+        <!-- <button type="ok" class="btn" onclick="openPopup()">Login</button> -->
+        <!-- <div class="popup" id="popup">
+            <img src="tick_mark2.png">
+            <h1>Thank You!!</h1>
+            <p>Login Successfull</p>
+             <a href="chat.html" class="ok">
+                <button type="button"  onclick="closePopup()">OK</button>  
+             </a> -->
+        </div>
+        
+    </form>
+</div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwS6_WbQrr7Q8osSE0xA7byfgfieC-9OVgJHub4_nT-7O7N-pNKoGT_IKYq44qZUfzI/exec'
+    const form = document.forms['google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    //    .then(response => window.location.assign("chat.html"))
+        .then(alert("Login Sucesseful!! Please wait.."),window.location.assign("chat.html"))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<!-- <script>
+    let popup=document.getElementById("popup");
+    
+    function openPopup(){
+        popup.classList.add("openPopup");
+    }
+    function closePopup(){
+        popup.classList.remove("openPopup");
+    }
+</script> -->
+</body>
+</html>
